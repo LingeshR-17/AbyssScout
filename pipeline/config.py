@@ -1,8 +1,8 @@
 """Centralized configuration for AbyssScout pipeline and API."""
 
 from pathlib import Path
-from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 

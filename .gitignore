@@ -17,11 +17,7 @@ build/
 .env.*.local
 
 # Generated Data Lake & Local Databases
-data/raw/*.nc
-data/raw/*.json
-data/lake/
-data/*.duckdb
-data/*.duckdb.wal
+data/
 
 # Frontend Node
 frontend/node_modules/

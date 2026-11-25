@@ -6,7 +6,7 @@ import pandas as pd
 from fastapi.testclient import TestClient
 
 from backend.main import app
-from pipeline.clean import clean_argo_telemetry, classify_indian_ocean_region
+from pipeline.clean import classify_indian_ocean_region, clean_argo_telemetry
 from pipeline.run_all import run_pipeline
 
 client = TestClient(app)
