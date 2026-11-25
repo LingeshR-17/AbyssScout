@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -107,7 +107,7 @@ def _probe_erddap_live() -> pd.DataFrame | None:
                 return None
             logger.info("Fetched %d live rows from IFREMER ERDDAP.", len(df))
             return df
-    except Exception as exc:
+    except (httpx.HTTPError, ValueError, OSError) as exc:
         logger.warning("ERDDAP live probe unavailable (%s); activating offline synthetic fallback.", exc)
         return None
 
@@ -151,7 +151,7 @@ def _generate_indian_ocean_telemetry(years: list[int]) -> pd.DataFrame:
         for year in years:
             for month in range(1, 13):
                 # 1 cycle per month per float (represents monthly aggregated satellite ping)
-                obs_dt = datetime(year, month, 15, 6, 30, tzinfo=timezone.utc) + timedelta(
+                obs_dt = datetime(year, month, 15, 6, 30, tzinfo=UTC) + timedelta(
                     hours=int(rng.integers(0, 48))
                 )
                 # Slight realistic float drift

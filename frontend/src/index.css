@@ -1,0 +1,111 @@
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  /* Curated 3-Color Harmonic Palette: Abyssal Telemetry Observatory */
+  --bg-abyss: #0b131e;          /* 60% Primary Base */
+  --bg-slate: #111a27;          /* Elevated Primary */
+  --surface-seafoam: #1a3a40;   /* 30% Secondary Enhancer */
+  --surface-seafoam-soft: rgba(26, 58, 64, 0.55);
+  --accent-seafoam: #2a6f72;
+  --accent-seafoam-bright: #4ea5a8;
+  --accent-coral: #ff6b4a;      /* 10% Trademark Accent */
+  --accent-coral-glow: rgba(255, 107, 74, 0.25);
+
+  --text-primary: #eef4f6;
+  --text-secondary: #9bb3bc;
+  --text-muted: #68828d;
+  --border-subtle: rgba(78, 165, 168, 0.22);
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-abyss);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Leaflet overrides for Abyssal Observatory */
+.leaflet-container {
+  background: #08101a !important;
+  font-family: var(--font-sans);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--bg-slate) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55) !important;
+}
+
+@keyframes coralPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+.beacon-ring {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 107, 74, 0.35);
+  border: 2px solid #ff6b4a;
+  position: relative;
+}
+
+.beacon-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #ff6b4a;
+  animation: coralPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-abyss);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-seafoam);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-seafoam);
+}
