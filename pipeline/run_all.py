@@ -4,8 +4,16 @@ from __future__ import annotations
 
 import argparse
 import logging
+import sys
 import time
 import uuid
+from pathlib import Path
+
+# Allow direct execution via `python pipeline/run_all.py` or IDE Run button
+_PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
+
 import pandas as pd
 
 from pipeline.clean import clean_argo_telemetry
