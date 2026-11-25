@@ -1,0 +1,35 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Environment & Secrets (Rule #8: Never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Generated Data Lake & Local Databases
+data/raw/*.nc
+data/raw/*.json
+data/lake/
+data/*.duckdb
+data/*.duckdb.wal
+
+# Frontend Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
